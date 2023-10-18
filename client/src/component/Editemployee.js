@@ -7,8 +7,8 @@ const Editemployee = () => {
   // const [emp, setEmp] = useState("");
   // console.log("emo>>>", emp);
   const [emp, setEmp] = useState({
+    studentid: "",
     name: "",
-    email: "",
     mobile: "",
     designation: "",
     gender: "",
@@ -42,7 +42,7 @@ const Editemployee = () => {
         .patch(`http://localhost:4000/api/v1/auth/employeeedit/${params.id}`, emp)
         .then((res) => {
           toast.success("user created successfully");
-          navigate("/list");
+          navigate("/");
           // history.push("/list");
         })
         .catch((err) => toast.error(err));
@@ -54,12 +54,29 @@ const Editemployee = () => {
   return (
     <div>
       <div className="text-center">
-        <h1>Edit Employee</h1>
+        <h1>Edit Student</h1>
       </div>
       <div className="row d-flex justify-content-center">
         <div className="col-md-6 shadow-lg p-3 pb-0 mb-2 bg-body rounded ">
           <form onSubmit={handleSubmit}>
             <div className="form-group col ">
+            <div className="row mt-2">
+                <div className="col-3">
+                  {" "}
+                  <label>Student ID</label>
+                </div>
+                <div className="col-8">
+                  <input
+                    type="number"
+                    className="form-control"
+                    placeholder="Enter Mobile Number"
+                    name="studentid"
+                    value={emp.studentid}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+              </div>
               <div className="row">
                 <div className="col-3">
                   {" "}
@@ -77,33 +94,16 @@ const Editemployee = () => {
                   />
                 </div>
               </div>
-              <div className="row mt-2">
+              <div className="row">
                 <div className="col-3">
                   {" "}
-                  <label>Email</label>
+                  <label>Marks</label>
                 </div>
                 <div className="col-8">
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Enter Email"
-                    name="name"
-                    value={emp.email}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="row mt-2">
-                <div className="col-3">
-                  {" "}
-                  <label>Mobile Number</label>
-                </div>
-                <div className="col-8">
-                  <input
-                    type="number"
-                    className="form-control"
-                    placeholder="Enter Mobile Number"
+                    placeholder="Enter name"
                     name="mobile"
                     value={emp.mobile}
                     onChange={handleInputChange}
@@ -114,7 +114,7 @@ const Editemployee = () => {
               <div className="row mt-2">
                 <div className="col-3">
                   {" "}
-                  <label>Designation</label>
+                  <label>Teacher Name</label>
                 </div>
                 <div className="col-8">
                   <input
@@ -169,7 +169,7 @@ const Editemployee = () => {
               <div className="row mt-2">
                 <div className="col-3">
                   {" "}
-                  <label>Course</label>
+                  <label>Subject</label>
                 </div>
 
                 <div className="col-8">
@@ -214,17 +214,6 @@ const Editemployee = () => {
                       BSC
                     </label>
                   </div>
-                </div>
-              </div>
-
-              <div class="mb-3 d-flex mt-2">
-                <div className="col-3 ">
-                  <label for="formFile" class="form-label">
-                    Image Upload
-                  </label>
-                </div>
-                <div className="col-8">
-                  <input class="form-control" type="file" id="formFile" />
                 </div>
               </div>
 

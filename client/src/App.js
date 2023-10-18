@@ -20,9 +20,8 @@ function App() {
     <Router>
       <Navbar/>
       <Routes>
-        <Route path='/' element={<Login/>}/>
         <Route path='/home' element={<Home/>}/>
-        <Route path='/login' element={<Login/>}/>
+       
         <Route path='/create' element={<Createemployee/>}/>
         <Route path='/edit/:id' element={<Editemployee/>}/>
         <Route path='/list' element={<Listofemployee/>}/>

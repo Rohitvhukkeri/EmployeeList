@@ -28,27 +28,9 @@ function Navbar() {
             id="navbarSupportedContent"
           >
             <ul class="navbar-nav mb-2 mb-lg-0">
-              
-              <li class="nav-item">
-                <NavLink to={"/home"} className="nav-link active">
-                 Home
-                </NavLink>
-              </li>
               <li class="nav-item ">
               <NavLink to={"/list"} className="nav-link active">
                  Employee List
-                </NavLink>
-              </li>
-            
-             
-              <li class="nav-item">
-                <a class="nav-link" href="#">
-                  Sachin
-                </a>
-              </li>
-              <li class="nav-item">
-              <NavLink to={"/login"} className="nav-link active">
-                 Logout
                 </NavLink>
               </li>
             

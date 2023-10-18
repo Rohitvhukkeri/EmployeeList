@@ -6,13 +6,12 @@ import { useNavigation, NavLink, useNavigate } from "react-router-dom";
 
 const Createemployee = () => {
   const [formData, setFormData] = useState({
+    studentid: "",
     name: "",
-    email: "",
     mobile: "",
     designation: "",
     gender: "",
     course: "",
-    image: "",
   });
 
   const navigate = useNavigate();
@@ -44,12 +43,28 @@ const Createemployee = () => {
   return (
     <div>
       <div className="text-center">
-        <h1>Create Employee</h1>
+        <h1>Create Student</h1>
       </div>
       <div className="row d-flex justify-content-center">
         <div className="col-md-6 shadow-lg p-3 pb-0 mb-2 bg-body rounded ">
           <form onSubmit={handleSubmit}>
             <div className="form-group col ">
+            <div className="row mt-2">
+                <div className="col-3">
+                  {" "}
+                  <label>Student Id</label>
+                </div>
+                <div className="col-8">
+                  <input
+                    type="number"
+                    className="form-control"
+                    placeholder="Enter Id"
+                    name="studentid"
+                    value={formData.studentid}
+                    onChange={handleInputChange}
+                  />
+                </div>
+              </div>
               <div className="row">
                 <div className="col-3">
                   {" "}
@@ -70,30 +85,13 @@ const Createemployee = () => {
               <div className="row mt-2">
                 <div className="col-3">
                   {" "}
-                  <label>Email</label>
-                </div>
-                <div className="col-8">
-                  <input
-                    type="text"
-                    className="form-control"
-                    placeholder="Enter Email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                  />
-                </div>
-              </div>
-              <div className="row mt-2">
-                <div className="col-3">
-                  {" "}
-                  <label>Mobile Number</label>
+                  <label>Marks</label>
                 </div>
                 <div className="col-8">
                   <input
                     type="number"
                     className="form-control"
-                    placeholder="Enter Mobile Number"
+                    placeholder="Enter Marks"
                     name="mobile"
                     value={formData.mobile}
                     onChange={handleInputChange}
@@ -103,7 +101,7 @@ const Createemployee = () => {
               <div className="row mt-2">
                 <div className="col-3">
                   {" "}
-                  <label>Designation</label>
+                  <label>Teacher Name</label>
                 </div>
                 <div className="col-8">
                   <input
@@ -155,7 +153,7 @@ const Createemployee = () => {
               <div className="row mt-2">
                 <div className="col-3">
                   {" "}
-                  <label>Course</label>
+                  <label>Subject</label>
                 </div>
 
                 <div className="col-8">
@@ -171,7 +169,7 @@ const Createemployee = () => {
                       // onChange={(e)=>setCourse(e.target.value)}
                     />
                     <label class="form-check-label ms-2" for="inlineRadio1">
-                      MCA
+                      CSE
                     </label>
                   </div>
 
@@ -185,7 +183,7 @@ const Createemployee = () => {
                       onChange={handleInputChange}
                     />
                     <label class="form-check-label ms-2" for="inlineRadio1">
-                      BCA
+                      EEE
                     </label>
                   </div>
 
@@ -199,25 +197,9 @@ const Createemployee = () => {
                       onChange={handleInputChange}
                     />
                     <label class="form-check-label ms-2" for="inlineRadio1">
-                      BSC
+                      Civil
                     </label>
                   </div>
-                </div>
-              </div>
-
-              <div class="mb-3 d-flex mt-2">
-                <div className="col-3 ">
-                  <label for="formFile" class="form-label">
-                    Image Upload
-                  </label>
-                </div>
-                <div className="col-8">
-                  <input
-                    accept="png,jpg"
-                    class="form-control"
-                    type="file"
-                    id="formFile"
-                  />
                 </div>
               </div>
 
@@ -239,3 +221,4 @@ const Createemployee = () => {
 };
 
 export default Createemployee;
+

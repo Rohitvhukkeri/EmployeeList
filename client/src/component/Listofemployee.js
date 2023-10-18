@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
-import moment from 'moment';
+// import moment from "moment";
 
 const Listofemployee = () => {
   const [allUsers, setAllUsers] = useState([]);
   const [count, setCount] = useState([]);
+  const [search, setSearch] = useState("");
 
   console.log("list>>", allUsers);
   const readAllUsers = async () => {
@@ -26,10 +27,10 @@ const Listofemployee = () => {
   return (
     <div>
       <div className="">
-        <h5>Employee List</h5>
+        <h5>Marks List</h5>
       </div>
       <div className="d-flex justify-content-end container">
-        <p className="col-3">Toatl count :  {count} </p>
+        <p className="col-3">Total count : {count} </p>
 
         <NavLink to={"/create"}>
           <button type="submit" class="btn btn-primary">
@@ -48,8 +49,10 @@ const Listofemployee = () => {
             type="search"
             placeholder="Search"
             aria-label="Search"
+            onChange={(e) => setSearch(e.target.value)}
           />
         </form>
+        {/* {allUsers.filter((item)=> item.email.toLocaleLowerCase().includes(search))} */}
       </div>
 
       <div className="container">
@@ -57,58 +60,38 @@ const Listofemployee = () => {
           <thead>
             <tr>
               <th scope="col">Unique Id</th>
-              <th scope="col">Image</th>
+              <th scope="col">Student Id</th>
               <th scope="col">Name</th>
-              <th scope="col">Email</th>
-              <th scope="col">Mobile No</th>
-              <th scope="col">Designatin</th>
+              <th scope="col">Marks</th>
+              <th scope="col">Teacher Name</th>
               <th scope="col">Gender</th>
-              <th scope="col">Course</th>
-              <th scope="col">Created Date</th>
+              <th scope="col">Subject</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
           <tbody>
-         {
-          allUsers && allUsers.map((item,index)=>{
-            return (
-              <tr>
-                <td>
-
-                </td>
-                <td>
-                  <img src={item.image.url} alt="" width={"50px"} height={"50px"}/>
-                </td>
-                <td>
-                  {item.name}
-                </td>
-                <td>
-                  {item.email}
-                </td>
-                <td>
-                  {item.mobile}
-                </td>
-                <td>
-                  {item.designation}
-                </td>
-                <td>
-                  {item.gender}
-                </td>
-                <td>
-                  {item.course}
-                </td>
-                <td>
-                {moment().format("DD MM YYYY")}
-                  {/* {item.createdAt} */}
-
-                </td>
-                <td>
-                  <NavLink to={`/edit/${item._id}`}>Edit</NavLink>
-                </td>
-              </tr>
-            )
-          })
-         }
+            {allUsers &&
+              allUsers.filter((item)=> (item.name.toLocaleLowerCase().includes(search))).map((item, index) => {
+                return (
+                  <tr>
+                    <td>{index+1}</td>
+                    <td>{item.studentid}</td>
+                    <td>{item.name}</td>
+                    {/* <td>{item.email}</td> */}
+                    <td>{item.mobile}</td>
+                    <td>{item.designation}</td>
+                    <td>{item.gender}</td>
+                    <td>{item.course}</td>
+                    {/* <td>
+                      {moment().format("DD MM YYYY")}
+                      {/* {item.createdAt} */}
+                    {/* </td>  */}
+                    <td>
+                      <NavLink to={`/edit/${item._id}`}>Edit</NavLink>
+                    </td>
+                  </tr>
+                );
+              })}
           </tbody>
         </table>
       </div>

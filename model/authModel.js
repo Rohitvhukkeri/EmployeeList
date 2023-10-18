@@ -2,26 +2,21 @@ const mongoose = require('mongoose');
 
 const Auth = new mongoose.Schema(
     {
+      studentid: {
+        type:Number,
+        // required:true,
+        trim:true,
+    },
       name: {
           type:String,
           required:true,
           trim:true,
       },
-      email: {
-          type:String,
-          required:true,
-          trim:true,
-          unique:true
-      },
       mobile: {
           type:String,
-          required:true,
+          // required:true,
           trim:true,
           unique:true
-      },
-      password: {
-          type:String,
-          trim:true, 
       },
       course:{
           type:String,
@@ -35,13 +30,6 @@ const Auth = new mongoose.Schema(
         type: String,
         default: ""
       },
-      image:{
-        type:Object,
-        default:{
-            url:'https://www.ncenet.com/wp-content/uploads/2020/04/No-image-found.jpg'
-        }
-      }
-      
     },
     {
       collection: "users",
